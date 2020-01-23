@@ -128,7 +128,7 @@ public final class MissionCommandCenter {
 
             System.out.println("### WARNING : " + e.getMessage());
 
-            return null;
+            System.exit(1);
         }
 
         System.out.println("Controlling rover " + roverId + "...");
@@ -195,14 +195,11 @@ public final class MissionCommandCenter {
      */
     public double computeRoverCoveragePercent(Rover rover) {
         // TODO 6) Compute the rover's grid coverage percentage
-        int couverture = 0;
+
         Set<String> fDeRoute = new HashSet<>(rover.getGeo());
 
-        for ( int i = 0 ; i < fDeRoute.size(); i++) {
+        int couverture = fDeRoute.size();
 
-            couverture = i;
-
-        }
 
         if(this.gridHeight == 0){return 0d;}
         if(this.gridWidth == 0){return 0d;}

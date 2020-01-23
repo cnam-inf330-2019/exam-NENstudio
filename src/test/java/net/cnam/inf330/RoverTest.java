@@ -104,6 +104,14 @@ public class RoverTest {
      */
     @Test
     public void outputDataTest() throws IOException, URISyntaxException {
+        MissionCommandCenter mcc = MissionCommandCenter.getInstance(2,2);
+
+        Rover roverTest = new Rover(1,0,0, Orientation.S);
+        mcc.addRover(roverTest);
+
+
+
+
         List<String> inputLines = Main.readResourceFile("rover_test_input.txt");
         List<String> expectedOutputLines = Main.readResourceFile("rover_test_output.txt");
 
