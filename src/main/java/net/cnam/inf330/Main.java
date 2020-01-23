@@ -19,9 +19,9 @@ public class Main {
      * @throws IOException
      * @throws URISyntaxException
      */
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) throws IOException, URISyntaxException, InvalidRoverPositionException {
         List<String> lines = Main.readResourceFile("rover_data.txt");
-        MissionCommandCenter mcc = new MissionCommandCenter();
+        MissionCommandCenter mcc = MissionCommandCenter.getInstance();
         List<String> outputLines = mcc.processRoverData(lines);
 
         System.out.println("\n===========");

@@ -1,5 +1,7 @@
 package net.cnam.inf330;
 
+import java.util.List;
+
 /**
  * Class which represents a Rover deployed on the Mars exploration grid.
  */
@@ -9,6 +11,7 @@ public class Rover {
     private int x;
     private int y;
     private Orientation o;
+    private List<String> geo;
 
     /**
      * Create a Rover at a specified location and orientation on the grid.
@@ -97,6 +100,10 @@ public class Rover {
         }
     }
 
+    public List<String> getGeo() {
+        return geo;
+    }
+
     /**
      * Move the Rover on the grid in a direction which depends on the current orientation of the Rover.
      */
@@ -104,15 +111,19 @@ public class Rover {
         switch (o) {
             case N:
                 this.y = this.y + 1;
+                this.geo.add(this.x + " " + this.y + " " + this.o);
                 break;
             case E:
                 this.x = this.x + 1;
+                this.geo.add(this.x + " " + this.y + " " + this.o);
                 break;
             case S:
                 this.y = this.y - 1;
+                this.geo.add(this.x + " " + this.y + " " + this.o);
                 break;
             case W:
                 this.x = this.x - 1;
+                this.geo.add(this.x + " " + this.y + " " + this.o);
                 break;
             default:
         }
