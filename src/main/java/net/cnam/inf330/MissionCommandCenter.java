@@ -128,7 +128,7 @@ public final class MissionCommandCenter {
 
             System.out.println("### WARNING : " + e.getMessage());
 
-            System.exit(1);
+            System.exit(1); // FIXME Never do this ! In this case, return null instead.
         }
 
         System.out.println("Controlling rover " + roverId + "...");
@@ -140,6 +140,7 @@ public final class MissionCommandCenter {
             try{
                 checkRoverPosition(rover);
             }catch ( Exception e) {
+                // FIXME Why not implement the moveBackward() method instead ?
                 rover.rotateLeft();
                 rover.rotateLeft();
                 rover.moveForward();
@@ -196,6 +197,7 @@ public final class MissionCommandCenter {
     public double computeRoverCoveragePercent(Rover rover) {
         // TODO 6) Compute the rover's grid coverage percentage
 
+        // FIXME getGeo always returns an empty list
         Set<String> fDeRoute = new HashSet<>(rover.getGeo());
 
         int couverture = fDeRoute.size();
@@ -204,6 +206,7 @@ public final class MissionCommandCenter {
         if(this.gridHeight == 0){return 0d;}
         if(this.gridWidth == 0){return 0d;}
 
+        // FIXME This is not a percentage
         return (couverture/(abs(this.gridHeight*this.gridWidth)));
     }
 

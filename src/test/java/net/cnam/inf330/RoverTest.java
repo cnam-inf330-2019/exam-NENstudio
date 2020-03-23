@@ -22,6 +22,7 @@ public class RoverTest {
 
         MissionCommandCenter mcc = MissionCommandCenter.getInstance();
         // TODO 1) Initialize MCC singleton instance before the test methods are run
+        // FIXME The idea was to store the instance in a member variable
     }
 
     /**
@@ -43,6 +44,7 @@ public class RoverTest {
         ThrowingRunnable tr2 = () -> mcc.checkRoverPosition(rover);
         assertThrows(InvalidRoverPositionException.class, tr2);
 
+        // FIXME Test that the rover has pulled back
 
         mcc.clearRovers();
     }
@@ -64,12 +66,15 @@ public class RoverTest {
 
         rover.moveForward();
 
-        try{
+        try{ // FIXME You don't catch the exception here, you just assert that it is effectively thrown
 
             ThrowingRunnable tr = () -> mcc.checkRoverPosition(rover);
             assertThrows(InvalidRoverPositionException.class, tr);
 
         }catch ( Exception e) {
+            /* FIXME This should be done by the main program, not the test itself
+             *  In the test, you assert that the main program behaves as expected.
+             */
             rover.rotateLeft();
             rover.rotateLeft();
             rover.moveForward();
@@ -96,6 +101,7 @@ public class RoverTest {
         ThrowingRunnable tr = () -> mcc.checkRoverPosition(roverTest);
         assertThrows(InvalidRoverPositionException.class, tr);
 
+        // FIXME Assert that the rover is not deployed (is null)
     }
 
 
@@ -115,7 +121,7 @@ public class RoverTest {
         List<String> inputLines = Main.readResourceFile("rover_test_input.txt");
         List<String> expectedOutputLines = Main.readResourceFile("rover_test_output.txt");
 
-        // TODO 7) Test that processing the input lines produces an output that matches the expected output lines
+        // TODO FIXME 7) Test that processing the input lines produces an output that matches the expected output lines
         fail();
     }
 }
